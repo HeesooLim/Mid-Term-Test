@@ -43,8 +43,31 @@ document.getElementById('Ithaca').textContent = `Most famous for being the home 
 document.getElementById('Gavdos').textContent = `Near the more well-known Crete, Gavdos is the most southern island in Greece — and the most southern spot in Europe discounting the Canaries. Only accessible by ferry, the remote island has only about 50 permanent residents, and can feel like your private playground. Local legend has it that the island was the home of goddess Calypso, who kept Odysseus prisoner here. Today, a favorite tourist activity is to visit the spot believed to be her cave. Be warned, you won't find any luxury hotels here. While the romantically under-developed, super laid back island has a number of rooms for rent, those are limited, as the real draw here for many is the free, seaside camping.`;
 
 
-// YOUR CODE GOES HERE
+// If the user click the Send button, this function will be invoked
+function send()
+{
+   // display the output on console
+   console.log(`First Name: ${firstName.value}`);
+   console.log(`Last Name: ${lastName.value}`);
+   console.log(`Contact Number: ${contactNumber.value}`);
+   console.log(`Email: ${email.value}`);
+   console.log(`User Message: ${yourMessage.value}`);
+}
 
+// select Send button element
+let sendButton = document.getElementById('sendButton');
+
+  // if Send button exists, add event listener
+if(sendButton)
+{
+    sendButton.addEventListener("click", (event) =>
+    {
+        // prevent default event from happening
+        event.preventDefault();
+        // function displaying the output on console
+        send();
+    });
+}
 
 })();
 
