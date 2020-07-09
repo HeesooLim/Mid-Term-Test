@@ -28,6 +28,21 @@ article, section {
     margin-bottom: 4em;
 }
 
+/* smooth scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+/* each form elements' container. Position is relateve to make an error message's position absolute */
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* The error message's style. Its position is absolute to be located within form-group element*/
+.form-group div {
+    position: absolute;
+    font-size: 13px;
+    margin-left: 3px;
+    color: red;
 }

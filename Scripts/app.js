@@ -54,6 +54,91 @@ function send()
    console.log(`User Message: ${yourMessage.value}`);
 }
 
+ // select elements with ID
+ let firstName = document.getElementById('firstName');
+ let lastName = document.getElementById('lastName');
+ let contactNumber = document.getElementById('contactNumber');
+ let email = document.getElementById('email');
+ let yourMessage = document.getElementById('yourMessage');
+
+ // create div elements
+ let firstNameErrorDiv = document.createElement('div');
+ let lastNameErrorDiv = document.createElement('div');
+ let emailErrorDiv = document.createElement('div');
+ let contactNumberErrorDiv = document.createElement('div');
+
+ // select array of elements with class name
+ let formGroups = document.getElementsByClassName('form-group');
+ 
+ // append div elements to each form-group class element
+ formGroups[0].appendChild(firstNameErrorDiv);
+ formGroups[1].appendChild(lastNameErrorDiv);
+ formGroups[2].appendChild(contactNumberErrorDiv);
+ formGroups[3].appendChild(emailErrorDiv);
+
+ // form validation function
+ function validation()
+ {
+    // if the length of first name input is greater than 3, change class name to valid and remove the error message
+    if(firstName.value.length>3)
+    {
+        firstName.className = "form-control is-valid";
+        firstNameErrorDiv.style.display = "none";
+    }
+    // otherwise, change the class name to invalid, assign and show the error message
+    else
+    {
+        firstName.className = "form-control is-invalid";
+        firstNameErrorDiv.innerHTML = `Enter more than 3 characters`;
+        firstNameErrorDiv.style.display = "block";
+    }
+
+
+    // if the length of second name input is greater than 3, change class name to valid and remove the error message
+    if(lastName.value.length>3)
+    {
+        lastName.className = "form-control is-valid";
+        lastNameErrorDiv.style.display = "none";
+    }
+    // otherwise, change the class name to invalid, assign and show the error message
+    else
+    {
+        lastName.className = "form-control is-invalid";
+        lastNameErrorDiv.innerHTML = `Enter more than 3 characters`;
+        lastNameErrorDiv.style.display = "block";
+    }
+
+
+    // if the length of contact number input is greater than 9, change class name to valid and remove the error message
+    if(contactNumber.value.length>9)
+    {
+        contactNumber.className = "form-control is-valid";
+        contactNumberErrorDiv.style.display = "none";
+    }
+    // otherwise, change the class name to invalid, assign and show the error message
+    else
+    {
+        contactNumber.className = "form-control is-invalid";
+        contactNumberErrorDiv.innerHTML = `Enter more than 9 characters`;
+        contactNumberErrorDiv.style.display = "block";
+    }
+
+
+    // if the length of email input is greater than 11 and it includes '@', change class name to valid and remove the error message
+    if(email.value.length>11 && email.value.includes("@"))
+    {
+        email.className = "form-control is-valid";
+        emailErrorDiv.style.display = "none";
+    }
+    // otherwise, change the class name to invalid, assign and show the error message
+    else
+    {
+        email.className = "form-control is-invalid";
+        emailErrorDiv.innerHTML = `Enter more than 11 characters including '@'`;
+        emailErrorDiv.style.display = "block";
+    }
+ }
+
 // select Send button element
 let sendButton = document.getElementById('sendButton');
 
@@ -64,8 +149,12 @@ if(sendButton)
     {
         // prevent default event from happening
         event.preventDefault();
+
         // function displaying the output on console
         send();
+        
+        // function validate form
+        validation();
     });
 }
 
